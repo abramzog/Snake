@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+.score_title{
+  font-size: xxx-large;  
+}
+
+canvas.board {
+    background-color: lightslategrey;
+    border: 1px solid ;
+    border-color: black;
+}
