@@ -3,47 +3,54 @@ const ctx = board.getContext("2d");
 const cube = 25;
 const row = board.height/cube;
 const col = board.width/cube;
-var timeInterval = 250;
-let status = false;
+let timeInterval = 250;
+let status = true;
+const snake = new Snake();
+const food = new Food();
 
-var snake = new Snake();
-var food = new Food(snake);
-
-var title = document.getElementById("score_title");
+const title = document.getElementById("score_title");
 title.innerHTML = "Score: " + (snake.score - 1);
 
 (function init(){
     snake.draw();
 }());
 
-var intervalHander = function (){
-    status = true;
-    ctx.clearRect(0,0,board.width, board.height);
-    if(snake.update()){
-        window.clearInterval(interval);
-    }
-    food.draw(); 
-    snake.draw();
+const intervalHandler = function (){
+    updateSnake();
+    draw();
+    caught();
+}
+
+const caught = function(){
     if(snake.caught(food)){
         title.innerHTML = "Score: " + (snake.score - 1);
         food.update();
-        if(snake.update()){
-            window.clearInterval(interval);
-            status = false;
-        }
+        updateSnake();
         if(snake.score % 5 === 0){
             timeInterval = timeInterval * 0.9;
         }
     }
 }
 
-let interval = window.setInterval(intervalHander, timeInterval);
+const updateSnake = function() {
+    if(snake.update()){
+        window.clearInterval(interval);
+    }
+}
+
+const draw = function(){
+    ctx.clearRect(0,0,board.width, board.height);
+    food.draw(); 
+    snake.draw();
+}
+
+const interval = window.setInterval(intervalHandler, timeInterval);
 
 window.addEventListener('keydown', (event =>{
     if(event.key === "Escape"){
         status = !status;
         if(status){
-            interval = window.setInterval(intervalHander, timeInterval);
+            interval = window.setInterval(intervalHandler, timeInterval);
         }
         else{
             window.clearInterval(interval);
@@ -51,14 +58,3 @@ window.addEventListener('keydown', (event =>{
     }
     snake.changeDirection(event.key);
 }))
-
-
-
-
-
-
-
-
-
-
-
