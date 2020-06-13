@@ -1,5 +1,5 @@
 class Food{
-    constructor(){
+    constructor() {
         this.x = (Math.floor(Math.random() * col - 1) + 1) * cube;
         this.y = (Math.floor(Math.random() * row - 1) + 1) * cube;
     }
@@ -9,7 +9,7 @@ class Food{
         ctx.fillRect( this.x, this.y, cube , cube);
     }
 
-    update(){
+    update() {
         this.x = (Math.floor(Math.random() * col - 1) + 1) * cube;
         this.y = (Math.floor(Math.random() * row - 1) + 1) * cube;
     }

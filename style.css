@@ -11,3 +11,48 @@ canvas.board {
     border: 1px solid ;
     border-color: black;
 }
+
+#game_over_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place front is invalid - may break your css so removed */  
+    padding-top: 100px; /* Location of the box - don't know what this does?  If it is to move your modal down by 100px, then just change top below to 100px and remove this*/
+    left: 0;
+    right:0; /* Full width (left and right 0) */
+    top: 0;
+    bottom: 0; /* Full height top and bottom 0 */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(184, 21, 21); /* Fallback color */
+    z-index: 1; /* Sit on top - higher than any other z-index in your site*/
+}
+
+.game_over_title {
+  font-size: 120px;
+  font-family: 'Black Ops One', cursive;
+  line-height: 120px;
+  text-align: center;
+  text-shadow: 5px 5px #000000;
+  color: #ffffff;
+  
+}
+
+
+.start_over {
+  margin-top: 60px;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: corbel;
+    color: #ffffff;
+    text-shadow: 2.5px 2.5px #000000;
+    background-color: black;
+    border: 2px solid;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 320px;
+    height: 100px;
+    border-radius: 32px;
+    cursor: pointer;
+
+}
